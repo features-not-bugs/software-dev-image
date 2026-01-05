@@ -25,4 +25,4 @@ RUN ssh-keygen -A
 WORKDIR /home/hayden
 
 ENTRYPOINT ["/usr/bin/tini", "--"]
-CMD ["/usr/sbin/sshd", "-D"]
+CMD ["/usr/sbin/sshd", "-D", "-e"]
