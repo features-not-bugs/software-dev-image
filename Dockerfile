@@ -6,7 +6,8 @@ RUN pacman -Syu --noconfirm && \
     bash bzip2 binutils bash-completion \
     curl diffutils grep gzip helm \
     jq kubectl lz4 openssh sqlite \
-    sudo wget xz tar talosctl && \
+    sudo wget xz tar talosctl \
+    tini && \
     pacman -Scc --noconfirm
 
 RUN useradd -m -u 1000 -s /bin/bash hayden && \
@@ -19,4 +20,4 @@ RUN chmod +x /entrypoint.sh
 
 WORKDIR /home/hayden
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/usr/bin/tini", "--", "/entrypoint.sh"]
