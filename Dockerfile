@@ -12,7 +12,11 @@ RUN pacman -Syu --noconfirm && \
 RUN useradd -m -u 1000 -s /bin/bash hayden && \
     echo "hayden ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
-WORKDIR /home/hayden
-USER hayden
+RUN ssh-keygen -A
 
-CMD ["sleep", "infinity"]
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+WORKDIR /home/hayden
+
+ENTRYPOINT ["/entrypoint.sh"]
