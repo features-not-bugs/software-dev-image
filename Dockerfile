@@ -6,7 +6,8 @@ RUN pacman -Syu --noconfirm && \
     bash bzip2 binutils bash-completion \
     curl diffutils grep gzip helm \
     jq kubectl lz4 openssh sqlite \
-    sudo wget xz tar talosctl && \
+    sudo wget xz tar talosctl \
+    jdk21-openjdk && \
     pacman -Scc --noconfirm
 
 RUN useradd -m -u 1000 -s /bin/bash hayden && \
