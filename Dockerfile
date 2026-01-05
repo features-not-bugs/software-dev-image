@@ -21,8 +21,6 @@ RUN sudo -u hayden git clone https://aur.archlinux.org/yay-bin.git /tmp/yay-bin 
 RUN sudo -u hayden yay -S --noconfirm tini && \
     sudo -u hayden yay -Scc --noconfirm
 
-RUN ssh-keygen -A
-
 WORKDIR /home/hayden
 
 ENTRYPOINT ["/usr/bin/tini", "--"]
