@@ -7,7 +7,7 @@ RUN pacman -Syu --noconfirm && \
     curl diffutils grep gzip helm \
     jq kubectl lz4 openssh sqlite \
     sudo wget xz tar talosctl \
-    jdk21-openjdk && \
+    jdk21-openjdk dotnet-sdk && \
     pacman -Scc --noconfirm
 
 RUN useradd -m -u 1000 -s /bin/bash hayden && \
