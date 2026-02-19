@@ -7,7 +7,7 @@ RUN pacman -Syu --noconfirm && \
     curl diffutils grep gzip helm \
     jq kubectl lz4 openssh sqlite \
     sudo wget xz tar talosctl \
-    jdk21-openjdk dotnet-sdk && \
+    jdk21-openjdk dotnet-sdk python && \
     pacman -Scc --noconfirm
 
 RUN useradd -m -u 1000 -s /bin/bash hayden && \
@@ -20,6 +20,10 @@ RUN sudo -u hayden git clone https://aur.archlinux.org/yay-bin.git /tmp/yay-bin 
 
 RUN sudo -u hayden yay -S --noconfirm tini && \
     sudo -u hayden yay -Scc --noconfirm
+
+RUN curl -fsSL -o /tmp/get-platformio.py https://raw.githubusercontent.com/platformio/platformio-core-installer/master/get-platformio.py \ 
+    && python3 /tmp/get-platformio.py \
+    && rm -f /tmp/get-platformio.py
 
 WORKDIR /home/hayden
 
