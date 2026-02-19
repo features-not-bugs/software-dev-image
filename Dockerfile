@@ -22,7 +22,7 @@ RUN sudo -u hayden yay -S --noconfirm tini && \
     sudo -u hayden yay -Scc --noconfirm
 
 RUN curl -fsSL -o /tmp/get-platformio.py https://raw.githubusercontent.com/platformio/platformio-core-installer/master/get-platformio.py \ 
-    && python3 /tmp/get-platformio.py \
+    && sudo -u hayden python3 /tmp/get-platformio.py \
     && rm -f /tmp/get-platformio.py
 
 WORKDIR /home/hayden
