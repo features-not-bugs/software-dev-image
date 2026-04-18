@@ -18,10 +18,13 @@ RUN sudo -u hayden git clone https://aur.archlinux.org/yay-bin.git /tmp/yay-bin 
     sudo -u hayden makepkg -si --noconfirm && \
     rm -rf /tmp/yay-bin
 
-RUN sudo -u hayden yay -S --noconfirm tini && \
+RUN sudo -u hayden yay -S --noconfirm tini opencode-bin && \
     sudo -u hayden yay -Scc --noconfirm
 
 WORKDIR /home/hayden
 
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
 ENTRYPOINT ["/usr/bin/tini", "--"]
-CMD ["/usr/sbin/sshd", "-D", "-e"]
+CMD ["/entrypoint.sh"]
