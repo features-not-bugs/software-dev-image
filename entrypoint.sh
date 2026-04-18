@@ -2,4 +2,4 @@
 set -e
 
 /usr/sbin/sshd -D -e &
-exec opencode web --hostname 0.0.0.0 --port 4096
+exec su -s /bin/bash hayden -c "exec opencode web --hostname 0.0.0.0 --port 4096"
